@@ -32,6 +32,28 @@ echo "</table>";
                 
 mysqli_close($conexion);
 
+/*Conexion para insertar tipo variable*/
+$conexion = mysqli_connect("localhost", "root", "", "weather_station") 
+or die("Problemas de conexion");
+
+$registros = mysqli_query($conexion, "SELECT id, nombre FROM variables")
+or die("Problemas en el select".mysqli_error($conexion));
+
+while ($reg = mysqli_fetch_array($registros)) {
+echo "<option value='$reg[id]'>$reg[nombre]</option>";
+}
+
+/*Conexion para insertar sensor*/
+$conexion = mysqli_connect("localhost", "root", "", "weather_station") 
+or die("Problemas de conexion");
+
+$registros = mysqli_query($conexion, "SELECT id, modelo FROM sensores")
+or die("Problemas en el select".mysqli_error($conexion));
+
+while ($reg = mysqli_fetch_array($registros)) {
+echo "<option value='$reg[id]'>$reg[modelo]</option>";
+}
+
 /*Insertar datos*/
 $fecha = trim(htmlspecialchars($_REQUEST["fecha"], ENT_QUOTES, "UTF-8"));
 $tipo = trim(htmlspecialchars($_REQUEST["tipo"], ENT_QUOTES, "UTF-8"));
@@ -45,7 +67,6 @@ $conexion = mysqli_connect("localhost", "root", "", "weather_station")
 mysqli_query($conexion, "INSERT INTO medidas (id_sensor, id_variable, fecha_hora, valor) 
                             VALUES ($sensor, $tipo, $fecha, $valor)") 
     or die("Problemas en el insert".mysqli_error($conexion));
-
 
 /*Actualizar datos*/
 
