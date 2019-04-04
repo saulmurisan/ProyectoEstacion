@@ -65,39 +65,42 @@
 	}
 </style>
 </head>
-<body style="background-color: #C9B59C">
-<div class="text-center">
-	<!-- Button HTML (to Trigger Modal) -->
-	<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Login Modal</a>
-</div>
+<body style="background-color: #232327">
+
 
 <!-- Modal HTML -->
 <div id="myModal" class="modal fade">
 	<div class="modal-dialog modal-login">
 		<div class="modal-content">
 			<div class="modal-header">				
-				<h4 class="modal-title">Member Login</h4>
+				<h4 class="modal-title">Administrador</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
 				<form action="/examples/actions/confirmation.php" method="post">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Username" required="required">
+						<input type="text" class="form-control" placeholder="Usuario" required="required">
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="Password" required="required">
+						<input type="password" class="form-control" placeholder="Contraseña" required="required">
 					</div>
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
 					</div>
 				</form>				
-				<p class="hint-text"><a href="#">Forgot Password?</a></p>
+
 			</div>
 		</div>
 	</div>
 </div> 
+
+
 <div class="container" >
             <h2>Estación Meteorológica</h2>
+            <div class="text-center" style="width: 100px; heigth:">
+	<!-- Button HTML (to Trigger Modal) -->
+	<a href="#myModal" class="btn btn-primary btn-lg" data-toggle="modal">Administrador</a>
+            </div>
             <form action="visualizacion.php" method="post">
                 <div class="form-group">
                     <label for="fechades">Fecha desde: </label>
@@ -143,11 +146,11 @@ echo "<table class='table table-striped' style='background-color: '>";
 echo "<tr><th>Fecha</th><th>Tipo</th><th>Valor</th><th>Unidad</th><th>Sensor</th>";
 while ($reg = mysqli_fetch_array($registros)) {
     echo "<tr>";
-        echo "<td>" . $reg['me.Fecha_Hora'] . "</td>";
-        echo "<td>" . $reg['va.Nombre'] . "</td>";
-        echo "<td>" . $reg['me.Valor'] . "</td>";
-        echo "<td>" . $reg['va.Ud_Med'] . "</td>";
-        echo "<td>" . $reg['se.Modelo'] . "</td>";
+        echo "<td>" . $reg['me.fecha_hora'] . "</td>";
+        echo "<td>" . $reg['va.nombre'] . "</td>";
+        echo "<td>" . $reg['me.valor'] . "</td>";
+        echo "<td>" . $reg['va.ud_med'] . "</td>";
+        echo "<td>" . $reg['se.modelo'] . "</td>";
     echo "</tr>";
 }
 echo "</table>";
