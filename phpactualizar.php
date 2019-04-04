@@ -70,7 +70,7 @@ $ubi = trim(htmlspecialchars($_REQUEST["ubi"], ENT_QUOTES, "UTF-8"));
 $conexione = mysqli_connect("localhost", "root", "", "estacion") 
     or die("Problemas de conexión");
 
-$registrose = mysqli_query($conexione, "UPDATE estaciones SET marca='$marca', modelo='$modeloesta', ip='$ip', tipo_conex='$tipo_conex', ubi='$ubi' WHERE id=$idvariable")
+$registrose = mysqli_query($conexione, "UPDATE estaciones SET Marca='$marca', Modelo='$modeloesta', IP='$ip', Tipo_Conex='$tipo_conex', Ubi='$ubi' WHERE Id=$idvariable")
     or die("Problemas en el insert".mysqli_error($conexione));
 
 mysqli_close($conexione);
