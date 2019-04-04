@@ -27,7 +27,7 @@
                     <label for="medida">Tipo Medida: </label>
                     <select name="medida" class="form-control" >
 		<?php
-		$conexion = mysqli_connect("localhost", "root", "", "weather_station") 
+		$conexion = mysqli_connect("localhost", "root", "", "estacion") 
 or die("Problemas de conexion");
 
 $registros = mysqli_query($conexion, "SELECT id, nombre FROM variables")
@@ -49,7 +49,7 @@ echo "<option value='$reg[id]'>$reg[nombre]</option>";
             </form>
 
 <?php
-$conexion = mysqli_connect("localhost", "root", "", "weather_station") or die("Problemas con la conexión");
+$conexion = mysqli_connect("localhost", "root", "", "estacion") or die("Problemas con la conexión");
 $registros = mysqli_query($conexion, "SELECT me.fecha_hora, va.nombre, me.valor, va.ud_med, se.modelo 
                                         FROM medidas as me INNER JOIN sensores as se on me.id_sensor = se.id
                                         INNER JOIN variables as va on me.id_variable = va.id")
