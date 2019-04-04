@@ -4,11 +4,11 @@
 $conexionv = mysqli_connect("localhost", "root", "", "estacion") 
     or die("Problemas de conexion");
     
-$registrosv = mysqli_query($conexionv, "SELECT id, nombre FROM variables")
+$registrosv = mysqli_query($conexionv, "SELECT Id, Nombre FROM variables")
     or die("Problemas en el select".mysqli_error($conexionv));
     
 while ($regv = mysqli_fetch_array($registrosv)) {
-    echo "<option value='$regv[id]'>$regv[nombre]</option>";
+    echo "<option value='$regv[Id]'>$regv[Nombre]</option>";
 }
     
     /*Actualizar datos*/
@@ -19,7 +19,7 @@ $unidad = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
 $conexionv = mysqli_connect("localhost", "root", "", "cursophp")
     or die("Problemas de conexión");
     
-$registrosv = mysqli_query($conexionv, "UPDATE variables SET nombre='$tipo', ud_med='$unidad' WHERE idvariable=$idvariable") 
+$registrosv = mysqli_query($conexionv, "UPDATE variables SET nombre='$tipo', Ud_med='$unidad' WHERE idvariable=$idvariable") 
     or die("Problemas de actualización ".mysqli_error($conexionv));
 
 mysqli_close($conexionv);
@@ -29,22 +29,22 @@ mysqli_close($conexionv);
 $conexions = mysqli_connect("localhost", "root", "", "estacion") 
     or die("Problemas de conexion");
     
-$registross = mysqli_query($conexions, "SELECT id, modelo, desc, id_estacion FROM sensores")
+$registross = mysqli_query($conexions, "SELECT Id, Modelo, desc, Id_Estacion FROM sensores")
     or die("Problemas en el select".mysqli_error($conexions));
     
 while ($regs = mysqli_fetch_array($registrosv)) {
-    echo "<option value='$regs[id]'>$regs[modelo]</option>";
+    echo "<option value='$regs[Id]'>$regs[Modelo]</option>";
 }
 
     /*Actualizar datos*/
 $conexions = mysqli_connect("localhost", "root", "", "estacion") 
     or die("Problemas de conexion");
     
-$registross = mysqli_query($conexions, "SELECT id, modelo FROM estaciones")
+$registross = mysqli_query($conexions, "SELECT Id, Modelo FROM estaciones")
     or die("Problemas en el select".mysqli_error($conexions));
     
 while ($regs = mysqli_fetch_array($registross)) {
-    echo "<option value='$regs[id]'>$regs[modelo]</option>";
+    echo "<option value='$regs[Id]'>$regs[Modelo]</option>";
 }
 
 $idsensor = trim(htmlspecialchars($_REQUEST["idsensor"], ENT_QUOTES, "UTF-8"));
