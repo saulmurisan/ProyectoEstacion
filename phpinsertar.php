@@ -6,14 +6,14 @@ $unidad = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
 $conexionv = mysqli_connect("localhost", "root", "", "estacion") 
     or die("Problemas de conexion");
     
-$registrosv = mysqli_query($conexion, "SELECT id, nombre, ud_med FROM variables")
+$registrosv = mysqli_query($conexion, "SELECT Id, Nombre, Ud_Med FROM variables")
     or die("Problemas en el select".mysqli_error($conexionv));
 $regv = mysqli_fetch_array($registrosv);
-$uni = $reg['ud_med'];
+$uni = $reg['Ud_Med'];
 if ($unidad == $uni) {
     echo "La unidad $uni ya está insertada en la base de datos";
 } else {
-    mysqli_query($conexionv, "INSERT INTO variables (nombre, ud_med) 
+    mysqli_query($conexionv, "INSERT INTO variables (Nombre, Ud_Med) 
     VALUES ($tipo, $unidad)") 
         or die("Problemas en el insert".mysqli_error($conexionv));
 }
@@ -24,26 +24,26 @@ mysqli_close($conexionv);
 $conexions = mysqli_connect("localhost", "root", "", "estacion") 
 or die("Problemas de conexion");
 
-$registross = mysqli_query($conexions, "SELECT id, modelo FROM estaciones")
+$registross = mysqli_query($conexions, "SELECT Id, Modelo FROM estaciones")
 or die("Problemas en el select".mysqli_error($conexions));
 
 while ($regs = mysqli_fetch_array($registross)) {
-echo "<option value='$regs[id]'>$regs[modelo]</option>";
+echo "<option value='$regs[Id]'>$regs[Modelo]</option>";
 }
 
 /*Insertar datos*/
 $modelosensor = trim(htmlspecialchars($_REQUEST["modelosensor"], ENT_QUOTES, "UTF-8"));
-$desc = trim(htmlspecialchars($_REQUEST["desc"], ENT_QUOTES, "UTF-8"));
+$nombresensor = trim(htmlspecialchars($_REQUEST["nombresensor"], ENT_QUOTES, "UTF-8"));
 $idestacion = trim(htmlspecialchars($_REQUEST["idestacion"], ENT_QUOTES, "UTF-8"));
 
 $conexions = mysqli_connect("localhost", "root", "", "estacion") 
 or die("Problemas de conexion");
 
-$registross = mysqli_query($conexions, "SELECT id, modelo, desc, id_estacion FROM sensores")
+$registross = mysqli_query($conexions, "SELECT Id, Id_Estacion, Modelo, Nombre FROM sensores")
 or die("Problemas en el select".mysqli_error($conexions));
 
-mysqli_query($conexions, "INSERT INTO sensores (modelo, desc, id_estacion) 
-VALUES ($modelo, $desc, $idestacion)") 
+mysqli_query($conexions, "INSERT INTO sensores (Id_Estacion, Modelo, Nombre) 
+VALUES ($idestacion, $modelosensor, $nombresensor)") 
     or die("Problemas en el insert".mysqli_error($conexions));
 
 mysqli_close($conexions);
@@ -58,7 +58,7 @@ $ubi = trim(htmlspecialchars($_REQUEST["ubi"], ENT_QUOTES, "UTF-8"));
 $conexione = mysqli_connect("localhost", "root", "", "estacion") 
     or die("Problemas de conexión");
 
-mysqli_query($conexione, "INSERT INTO estaciones (id, marca, modelo, ip, tipo_conex, ubi) 
+mysqli_query($conexione, "INSERT INTO estaciones (Id, Marca, Modelo, IP, Tipo_Conex, Ubi) 
                             VALUES ($marca, $modeloesta, $ip, $tipo_conex, $ubi)") 
     or die("Problemas en el insert".mysqli_error($conexione));
 

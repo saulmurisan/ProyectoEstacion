@@ -12,20 +12,20 @@ echo "<option value='$reg[id]'>$reg[nombre]</option>";
 
 /*Consulta resultados*/ 
 $conexion = mysqli_connect("localhost", "root", "", "estacion") or die("Problemas con la conexión");
-$registros = mysqli_query($conexion, "SELECT me.fecha_hora, va.nombre, me.valor, va.ud_med, se.modelo 
-                                        FROM medidas as me INNER JOIN sensores as se on me.id_sensor = se.id
-                                        INNER JOIN variables as va on me.id_variable = va.id")
+$registros = mysqli_query($conexion, "SELECT me.Fecha_Hora, va.Nombre, me.Valor, va.Ud_Med, se.Modelo 
+                                        FROM medidas as me INNER JOIN sensores as se on me.Sensores_Id = se.Id
+                                        INNER JOIN variables as va on me.Variables_Id = va.Id")
     or die("Problemas en la consulta:".mysqli_error($conexion));
      
 echo "<table class='table table-striped'>";
 echo "<tr><th>Fecha</th><th>Tipo</th><th>Valor</th><th>Unidad</th><th>Sensor</th>";
 while ($reg = mysqli_fetch_array($registros)) {
     echo "<tr>";
-        echo "<td>" . $reg['me.fecha_hora'] . "</td>";
-        echo "<td>" . $reg['va.nombre'] . "</td>";
-        echo "<td>" . $reg['me.valor'] . "</td>";
-        echo "<td>" . $reg['va.ud_med'] . "</td>";
-        echo "<td>" . $reg['se.modelo'] . "</td>";
+        echo "<td>" . $reg['me.Fecha_Hora'] . "</td>";
+        echo "<td>" . $reg['va.Nombre'] . "</td>";
+        echo "<td>" . $reg['me.Valor'] . "</td>";
+        echo "<td>" . $reg['va.Ud_Med'] . "</td>";
+        echo "<td>" . $reg['se.Modelo'] . "</td>";
     echo "</tr>";
 }
 echo "</table>";
@@ -39,7 +39,7 @@ $unidad = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
 $conexion = mysqli_connect("localhost", "root", "", "estacion") 
     or die("Problemas de conexion");
     
-$registros = mysqli_query($conexion, "SELECT id, nombre, ud_med FROM variables")
+$registros = mysqli_query($conexion, "SELECT Id, Nombre, ud_med FROM variables")
     or die("Problemas en el select".mysqli_error($conexion));
 $reg = mysqli_fetch_array($registros);
 $uni = $reg['ud_med'];
