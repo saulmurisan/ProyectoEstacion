@@ -143,11 +143,11 @@ echo "<table class='table table-striped' style='background-color: '>";
 echo "<tr><th>Fecha</th><th>Tipo</th><th>Valor</th><th>Unidad</th><th>Sensor</th>";
 while ($reg = mysqli_fetch_array($registros)) {
     echo "<tr>";
-        echo "<td>" . $reg['me.fecha_hora'] . "</td>";
-        echo "<td>" . $reg['va.nombre'] . "</td>";
-        echo "<td>" . $reg['me.valor'] . "</td>";
-        echo "<td>" . $reg['va.ud_med'] . "</td>";
-        echo "<td>" . $reg['se.modelo'] . "</td>";
+        echo "<td>" . $reg['me.Fecha_Hora'] . "</td>";
+        echo "<td>" . $reg['va.Nombre'] . "</td>";
+        echo "<td>" . $reg['me.Valor'] . "</td>";
+        echo "<td>" . $reg['va.Ud_Med'] . "</td>";
+        echo "<td>" . $reg['se.Modelo'] . "</td>";
     echo "</tr>";
 }
 echo "</table>";
