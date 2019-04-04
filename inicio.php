@@ -65,11 +65,10 @@
 	}
 </style>
 </head>
-<body style="background-color: #232327">
-
-
+<body style="background-color: #232327; color: white">
 <!-- Modal HTML -->
-<div id="myModal" class="modal fade">
+
+<div id="myModal" class="modal fade" style="color: black">
 	<div class="modal-dialog modal-login">
 		<div class="modal-content">
 			<div class="modal-header">				
@@ -96,14 +95,14 @@
 
 
 <div class="container" >
-            <h2>Estación Meteorológica</h2>
-            <div class="text-center" style="width: 100px; heigth:">
-	<!-- Button HTML (to Trigger Modal) -->
-	<a href="#myModal" class="btn btn-primary btn-lg" data-toggle="modal">Administrador</a>
-            </div>
+            <div style="position: relative; float: left; width: 350px"><h2>Estación Meteorológica</h2></div>
+			<div style="position: relative; float: right; padding-top: 15px; width: 150px"><a href="#myModal" class="btn btn-primary btn-lg" data-toggle="modal">Administrador</a></div>
+	
+			<div style="position: relative; clear: both">
+
             <form action="visualizacion.php" method="post">
                 <div class="form-group">
-                    <label for="fechades">Fecha desde: </label>
+                    <label for="fechades" >Fecha desde: </label>
                     <input type="date" class="form-control" name="fecdes" id="fecdes" required>
                 </div>
                 <div class="form-group">
@@ -113,6 +112,7 @@
                 <div class="form-group">
                     <label for="medida">Tipo Medida: </label>
                     <select name="medida" class="form-control" >
+			</div>
 		<?php
 		$conexion = mysqli_connect("localhost", "root", "", "estacion") 
 or die("Problemas de conexion");
