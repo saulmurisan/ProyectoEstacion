@@ -49,13 +49,13 @@ while ($regs = mysqli_fetch_array($registross)) {
 
 $idsensor = trim(htmlspecialchars($_REQUEST["idsensor"], ENT_QUOTES, "UTF-8"));
 $modelosensor = trim(htmlspecialchars($_REQUEST["modelosensor"], ENT_QUOTES, "UTF-8"));
-$desc = trim(htmlspecialchars($_REQUEST["desc"], ENT_QUOTES, "UTF-8"));
+$nombresensor = trim(htmlspecialchars($_REQUEST["desc"], ENT_QUOTES, "UTF-8"));
 $idestacion = trim(htmlspecialchars($_REQUEST["idestacion"], ENT_QUOTES, "UTF-8"));
         
 $conexionv = mysqli_connect("localhost", "root", "", "cursophp")
     or die("Problemas de conexión");
         
-$registrosv = mysqli_query($conexionv, "UPDATE sensores SET modelo='$modelosensor', desc='$desc', id_estacion='$id_estacion' WHERE id=$idvariable") 
+$registrosv = mysqli_query($conexionv, "UPDATE sensores SET Id_Estacion='$idestacion' modelo='$modelosensor', Nombre='$nombresensor' WHERE id=$idvariable") 
     or die("Problemas de actualización ".mysqli_error($conexionv));
 
 mysqli_close($conexions);
@@ -70,7 +70,7 @@ $ubi = trim(htmlspecialchars($_REQUEST["ubi"], ENT_QUOTES, "UTF-8"));
 $conexione = mysqli_connect("localhost", "root", "", "estacion") 
     or die("Problemas de conexión");
 
-$registrose = mysqli_query($conexione, "UPDATE estaciones SET marca='$marca', modelo='$modeloesta', ip='$ip', tipo_conex='$tipo_conex', ubi='$ubi' WHERE id=$idvariable")
+$registrose = mysqli_query($conexione, "UPDATE estaciones SET Marca='$marca', Modelo='$modeloesta', IP='$ip', Tipo_Conex='$tipo_conex', Ubi='$ubi' WHERE Id=$idvariable")
     or die("Problemas en el insert".mysqli_error($conexione));
 
 mysqli_close($conexione);
