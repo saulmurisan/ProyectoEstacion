@@ -76,7 +76,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form action="/examples/actions/confirmation.php" method="post">
+				<form action="administracion.php" method="post">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Usuario" required="required">
 					</div>
@@ -84,7 +84,7 @@
 						<input type="password" class="form-control" placeholder="Contraseña" required="required">
 					</div>
 					<div class="form-group">
-						<input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
+						<input type="submit" class="btn btn-primary btn-block btn-lg" value="Login" >
 					</div>
 				</form>				
 
@@ -117,7 +117,7 @@
 		$conexion = mysqli_connect("localhost", "root", "", "estacion") 
 or die("Problemas de conexion");
 
-$registros = mysqli_query($conexion, "SELECT id, nombre FROM variables")
+$registros = mysqli_query($conexion, "SELECT Id, Nombre FROM variables")
 or die("Problemas en el select".mysqli_error($conexion));
 
 while ($reg = mysqli_fetch_array($registros)) {
@@ -137,20 +137,20 @@ echo "<option value='$reg[id]'>$reg[nombre]</option>";
 
 <?php
 $conexion = mysqli_connect("localhost", "root", "", "estacion") or die("Problemas con la conexión");
-$registros = mysqli_query($conexion, "SELECT me.fecha_hora, va.nombre, me.valor, va.ud_med, se.modelo 
-                                        FROM medidas as me INNER JOIN sensores as se on me.id_sensor = se.id
-                                        INNER JOIN variables as va on me.id_variable = va.id")
+$registros = mysqli_query($conexion, "SELECT me.Fecha_Hora, va.Nombre, me.Valor, va.Ud_Med, se.Modelo 
+                                        FROM medidas as me INNER JOIN sensores as se on me.Sensores_Id = se.Id
+                                        INNER JOIN variables as va on me.Variables_Id = va.Id")
     or die("Problemas en la consulta:".mysqli_error($conexion));
      
-echo "<table class='table table-striped' style='background-color: '>";
+echo "<table class='table table-striped'>";
 echo "<tr><th>Fecha</th><th>Tipo</th><th>Valor</th><th>Unidad</th><th>Sensor</th>";
 while ($reg = mysqli_fetch_array($registros)) {
     echo "<tr>";
-        echo "<td>" . $reg['me.fecha_hora'] . "</td>";
-        echo "<td>" . $reg['va.nombre'] . "</td>";
-        echo "<td>" . $reg['me.valor'] . "</td>";
-        echo "<td>" . $reg['va.ud_med'] . "</td>";
-        echo "<td>" . $reg['se.modelo'] . "</td>";
+        echo "<td>" . $reg['me.Fecha_Hora'] . "</td>";
+        echo "<td>" . $reg['va.Nombre'] . "</td>";
+        echo "<td>" . $reg['me.Valor'] . "</td>";
+        echo "<td>" . $reg['va.Ud_Med'] . "</td>";
+        echo "<td>" . $reg['se.Modelo'] . "</td>";
     echo "</tr>";
 }
 echo "</table>";
