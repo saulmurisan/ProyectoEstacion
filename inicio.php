@@ -78,10 +78,10 @@
 			<div class="modal-body">
 				<form action="administracion.php" method="post">
 					<div class="form-group">
-						<input type="text" class="form-control" placeholder="Usuario" required="required">
+						<input type="text" class="form-control" placeholder="Usuario" id="usuario" name="usuario" required="required">
 					</div>
 					<div class="form-group">
-						<input type="password" class="form-control" placeholder="Contraseña" required="required">
+						<input type="password" class="form-control" placeholder="Contraseña" id="contraseña" name="contraseña" required="required">
 					</div>
 					<div class="form-group">
 						<input type="submit" class="btn btn-primary btn-block btn-lg" value="Login" >
@@ -96,8 +96,14 @@
 
 <div class="container" >
             <div style="position: relative; float: left; width: 350px"><h2>Estación Meteorológica</h2></div>
-			<div style="position: relative; float: right; padding-top: 15px; width: 150px"><a href="#myModal" class="btn btn-primary btn-lg" data-toggle="modal">Administrador</a></div>
-	
+			<div style="position: relative; float: right; padding-top: 15px; width: 150px"><a href="#myModal" class="btn btn-primary btn-lg" data-toggle="modal">Administrador</a>           
+			 	<?php
+                if (isset($_REQUEST["error"])) {
+                    print "<p style='color: red'> $_REQUEST[error] </p>";
+                }
+				?>
+			</div>
+			
 			<div style="position: relative; clear: both">
 
             <form action="visualizacion.php" method="post">
