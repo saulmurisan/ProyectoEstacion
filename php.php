@@ -32,6 +32,20 @@ echo "</table>";
                 
 mysqli_close($conexion);
 
+/*Consulta datos*/
+$fechades = trim(htmlspecialchars($_REQUEST["fechades"], ENT_QUOTES, "UTF-8"));
+$fechahas = trim(htmlspecialchars($_REQUEST["fechahas"], ENT_QUOTES, "UTF-8"));
+$tipomedida = trim(htmlspecialchars($_REQUEST["tipomedida"], ENT_QUOTES, "UTF-8"));
+$valormedida = trim(htmlspecialchars($_REQUEST["valormedida"], ENT_QUOTES, "UTF-8"));
+
+$conexion = mysqli_connect("localhost", "root", "", "estacion") 
+    or die("Problemas de conexion");
+    
+$registros = mysqli_query($conexion, "SELECT Id, Nombre, ud_med FROM variables")
+    or die("Problemas en el select".mysqli_error($conexion));
+
+
+
 /*Conexion para insertar variables metereologicas*/
 $tipo = trim(htmlspecialchars($_REQUEST["tipo"], ENT_QUOTES, "UTF-8"));
 $unidad = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
@@ -92,28 +106,6 @@ mysqli_query($conexion, "INSERT INTO estaciones (id, marca, modelo, ip, tipo_con
                             VALUES ($marca, $modeloesta, $ip, $tipo_conex, $ubi)") 
     or die("Problemas en el insert".mysqli_error($conexion));
 
-/*Actualizar datos variables meteorologicas*/
-    /*Campo nombre*/
-$conexion = mysqli_connect("localhost", "root", "", "estacion") 
-or die("Problemas de conexion");
-
-$registros = mysqli_query($conexion, "SELECT id, nombre FROM variables")
-or die("Problemas en el select".mysqli_error($conexion));
-
-while ($reg = mysqli_fetch_array($registros)) {
-echo "<option value='$reg[id]'>$reg[nombre]</option>";
-}
-
-    /*Actualizar datos*/
-$identificador = trim(htmlspecialchars($_REQUEST["identificador"], ENT_QUOTES, "UTF-8"));
-$nombre = trim(htmlspecialchars($_REQUEST["nombre"], ENT_QUOTES, "UTF-8"));
-$curso = trim(htmlspecialchars($_REQUEST["curso"], ENT_QUOTES, "UTF-8"));
-
-$conexion = mysqli_connect("localhost", "root", "", "cursophp")
-    or die("Problemas de conexión");
-
-$registros = mysqli_query($conexion, "UPDATE alumnos SET nombre='$nombre', codigocurso=$curso WHERE idAlumno=$identificador") 
-    or die("Problemas de actualización ".mysqli_error($conexion));
 /*Eliminar datos*/
     /*Eliminar variables meteorologicas*/
 $idvariable = trim(htmlspecialchars($_REQUEST["idvariable"], ENT_QUOTES, "UTF-8"));
