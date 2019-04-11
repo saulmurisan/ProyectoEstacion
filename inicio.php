@@ -106,7 +106,7 @@
 			
 			<div style="position: relative; clear: both">
 
-            <form action="visualizacion.php" method="post">
+            <form action="inicio.php" method="post">
                 <div class="form-group">
                     <label for="fechades" >Fecha desde: </label>
                     <input type="date" class="form-control" name="fecdes" id="fecdes" required>
