@@ -32,6 +32,20 @@ echo "</table>";
                 
 mysqli_close($conexion);
 
+/*Consulta datos*/
+$fechades = trim(htmlspecialchars($_REQUEST["fechades"], ENT_QUOTES, "UTF-8"));
+$fechahas = trim(htmlspecialchars($_REQUEST["fechahas"], ENT_QUOTES, "UTF-8"));
+$tipomedida = trim(htmlspecialchars($_REQUEST["tipomedida"], ENT_QUOTES, "UTF-8"));
+$valormedida = trim(htmlspecialchars($_REQUEST["valormedida"], ENT_QUOTES, "UTF-8"));
+
+$conexion = mysqli_connect("localhost", "root", "", "estacion") 
+    or die("Problemas de conexion");
+    
+$registros = mysqli_query($conexion, "SELECT Id, Nombre, ud_med FROM variables")
+    or die("Problemas en el select".mysqli_error($conexion));
+
+
+
 /*Conexion para insertar variables metereologicas*/
 $tipo = trim(htmlspecialchars($_REQUEST["tipo"], ENT_QUOTES, "UTF-8"));
 $unidad = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
@@ -92,27 +106,54 @@ mysqli_query($conexion, "INSERT INTO estaciones (id, marca, modelo, ip, tipo_con
                             VALUES ($marca, $modeloesta, $ip, $tipo_conex, $ubi)") 
     or die("Problemas en el insert".mysqli_error($conexion));
 
-/*Actualizar datos variables meteorologicas*/
-    /*Campo nombre*/
-$conexion = mysqli_connect("localhost", "root", "", "estacion") 
-or die("Problemas de conexion");
+/*Eliminar datos*/
+    /*Eliminar variables meteorologicas*/
+$idvariable = trim(htmlspecialchars($_REQUEST["idvariable"], ENT_QUOTES, "UTF-8"));
 
-$registros = mysqli_query($conexion, "SELECT id, nombre FROM variables")
-or die("Problemas en el select".mysqli_error($conexion));
+$conexionv = mysqli_connect("localhost", "root", "", "cursophp")
+    or die("Problemas en la conexion");
+    
+$registrosv = mysqli_query($conexionv, "SELECT * FROM variables WHERE Id='$idvariable'")
+    or die("Problemas en la consulta ".mysqli_error($conexionv));
 
-while ($reg = mysqli_fetch_array($registros)) {
-echo "<option value='$reg[id]'>$reg[nombre]</option>";
+if ($regv = mysqli_fetch_array($registrosv)) {
+    mysqli_query($conexionv, "DELETE FROM variables WHERE Id='$idvariable'")
+        or die("Problemas en la consulta ".mysqli_error($conexionv));
+        print "<h3>Variable meteorologica borrada.</h3>";
+} else {
+    header("Location: inicio.php?error='Id no encontrado'");
 }
 
-    /*Actualizar datos*/
-$identificador = trim(htmlspecialchars($_REQUEST["identificador"], ENT_QUOTES, "UTF-8"));
-$nombre = trim(htmlspecialchars($_REQUEST["nombre"], ENT_QUOTES, "UTF-8"));
-$curso = trim(htmlspecialchars($_REQUEST["curso"], ENT_QUOTES, "UTF-8"));
+    /*Eliminar sensores*/
+    $idsensor = trim(htmlspecialchars($_REQUEST["idsensor"], ENT_QUOTES, "UTF-8"));
 
-$conexion = mysqli_connect("localhost", "root", "", "cursophp")
-    or die("Problemas de conexión");
+    $conexions = mysqli_connect("localhost", "root", "", "cursophp")
+        or die("Problemas en la conexion");
+        
+    $registross = mysqli_query($conexions, "SELECT * FROM sensores WHERE Id='$idsensor'")
+        or die("Problemas en la consulta ".mysqli_error($conexions));
+    
+    if ($regs = mysqli_fetch_array($registross)) {
+        mysqli_query($conexions, "DELETE FROM sensores WHERE Id='$idsensor'")
+            or die("Problemas en la consulta ".mysqli_error($conexions));
+            print "<h3>Variable meteorologica borrada.</h3>";
+    } else {
+        header("Location: inicio.php?error='Id no encontrado'");
+    }
+    /*Eliminar estaciones*/
+    $idestacion = trim(htmlspecialchars($_REQUEST["idestacion"], ENT_QUOTES, "UTF-8"));
 
-$registros = mysqli_query($conexion, "UPDATE alumnos SET nombre='$nombre', codigocurso=$curso WHERE idAlumno=$identificador") 
-    or die("Problemas de actualización ".mysqli_error($conexion));
-/*Eliminar datos*/
+    $conexione = mysqli_connect("localhost", "root", "", "cursophp")
+        or die("Problemas en la conexion");
+        
+    $registrose = mysqli_query($conexione, "SELECT * FROM variables WHERE Id='$idestacion'")
+        or die("Problemas en la consulta ".mysqli_error($conexione));
+    
+    if ($rege = mysqli_fetch_array($registross)) {
+        mysqli_query($conexione, "DELETE FROM estaciones WHERE Id='$idestacion'")
+            or die("Problemas en la consulta ".mysqli_error($conexione));
+            print "<h3>Variable meteorologica borrada.</h3>";
+    } else {
+        header("Location: inicio.php?error='Id no encontrado'");
+    }
 ?>
