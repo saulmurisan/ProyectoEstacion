@@ -42,7 +42,7 @@
     $registrose = mysqli_query($conexione, "SELECT * FROM variables WHERE Id='$idestacion'")
         or die("Problemas en la consulta ".mysqli_error($conexione));
         
-    if ($rege = mysqli_fetch_array($registross)) {
+    if ($rege = mysqli_fetch_array($registrose)) {
         mysqli_query($conexione, "DELETE FROM estaciones WHERE Id='$idestacion'")
             or die("Problemas en la consulta ".mysqli_error($conexione));
             print "<h3>Variable meteorologica borrada.</h3>";
