@@ -3,14 +3,14 @@
     /*Eliminar variables meteorologicas*/
     $idvariable = trim(htmlspecialchars($_REQUEST["idvariable"], ENT_QUOTES, "UTF-8"));
 
-    $conexionv = mysqli_connect("localhost", "root", "", "cursophp")
+    $conexionv = mysqli_connect("localhost", "root", "", "estacion")
         or die("Problemas en la conexion");
         
-    $registrosv = mysqli_query($conexionv, "SELECT * FROM variables WHERE Id='$idvariable'")
+    $registrosv = mysqli_query($conexionv, "SELECT * FROM variables WHERE Id=$idvariable")
         or die("Problemas en la consulta ".mysqli_error($conexionv));
     
     if ($regv = mysqli_fetch_array($registrosv)) {
-        mysqli_query($conexionv, "DELETE FROM variables WHERE Id='$idvariable'")
+        mysqli_query($conexionv, "DELETE FROM variables WHERE Id=$idvariable")
             or die("Problemas en la consulta ".mysqli_error($conexionv));
             print "<h3>Variable meteorologica borrada.</h3>";
     } else {
@@ -20,7 +20,7 @@
     /*Eliminar sensores*/
     $idsensor = trim(htmlspecialchars($_REQUEST["idsensor"], ENT_QUOTES, "UTF-8"));
     
-    $conexions = mysqli_connect("localhost", "root", "", "cursophp")
+    $conexions = mysqli_connect("localhost", "root", "", "estacion")
         or die("Problemas en la conexion");
             
     $registross = mysqli_query($conexions, "SELECT * FROM sensores WHERE Id='$idsensor'")
@@ -36,7 +36,7 @@
     /*Eliminar estaciones*/
     $idestacion = trim(htmlspecialchars($_REQUEST["idestacion"], ENT_QUOTES, "UTF-8"));
     
-    $conexione = mysqli_connect("localhost", "root", "", "cursophp")
+    $conexione = mysqli_connect("localhost", "root", "", "estacion")
         or die("Problemas en la conexion");
             
     $registrose = mysqli_query($conexione, "SELECT * FROM variables WHERE Id='$idestacion'")

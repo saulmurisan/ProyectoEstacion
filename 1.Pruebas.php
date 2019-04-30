@@ -19,13 +19,7 @@
 
 <div class="container" >
 
-    <div style="position: relative; float: left; width: 200px"><h2>Variables</h2><br/></div>
-
-    <form action="formuvariable.php" method="post">
-                <p>
-                    <input type="submit" class="btn btn-primary btn-block" value="Insertar nueva variable">
-                </p>
-    </form>
+    <div style="position: relative; float: left; width: 200px"><h2>Administración</h2></div>
 
 
     <?php
@@ -34,19 +28,18 @@ $registros = mysqli_query($conexion, "SELECT Id, Nombre, Ud_Med
                                         FROM variables")
     or die("Problemas en la consulta:".mysqli_error($conexion));
      
-echo "<table class='table table-dark'>";
+echo "<table class='table table-striped'>";
 echo "<tr><th>Id</th><th>Nombre</th><th>Unidad medida</th><th>Acciones</th>";
 while ($reg = mysqli_fetch_array($registros)) {
     echo "<tr>";
         echo "<td>" . $reg['Id'] . "</td>";
         echo "<td>" . $reg['Nombre'] . "</td>";
         echo "<td>" . $reg['Ud_Med'] . "</td>";
-        echo "<td><a class='btn btn-primary btn-sm' href='borrarvariables.php?id=$reg[Id]' > Borrar </a> </td>";
+        echo "<td><button data-target='$reg[Id]'> <a href='variables.php' > Borrar </a> </td>";
 
     echo "</tr>";
 }
 echo "</table>";
-
 
     $conexionv = mysqli_connect("localhost", "root", "", "estacion")
         or die("Problemas en la conexion");
