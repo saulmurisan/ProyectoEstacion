@@ -9,7 +9,7 @@
         <script src="https://code.highcharts.com/modules/exporting.js"></script>
         <script src="https://code.highcharts.com/modules/export-data.js"></script>
         <link rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <script
             src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script
@@ -40,7 +40,7 @@ Highcharts.chart('container', {
         text: 'Source: IES.Ciudad.Jardin'
     },
     xAxis: {
-        categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+        categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'//añadir variable de fechas]
     },
     yAxis: {
         title: {
@@ -57,10 +57,11 @@ Highcharts.chart('container', {
     },
     series: [{
         name: 'Sensor Temperatura',
-        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6,//añadir variable//]
     }, ]
 });
 </script>
+//<!-- tamaño estadistica -->
                 </div>
             </div>
             <div class="col-sm-6 bg-warning">
@@ -72,17 +73,17 @@ Highcharts.chart('container2', {
         type: 'line'
     },
     title: {
-        text: 'Temperatura'
+        text: 'Temperatura'//Texto que aparecera de medida a tomar humedad,temperatura etc
     },
     subtitle: {
         text: 'Source: IES.Ciudad.Jardin'
     },
     xAxis: {
-        categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+        categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'//añadir variable fecha]
     },
     yAxis: {
         title: {
-            text: 'Temperatura (°C)'
+            text: 'Temperatura (°C)'//medida a tomar humedad,temperatura etc
         }
     },
     plotOptions: {
@@ -94,8 +95,8 @@ Highcharts.chart('container2', {
         }
     },
     series: [{
-        name: 'Sensor Temperatura',
-        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+        name: 'Sensor Temperatura',//tipo de sensor estadistica
+        data: [7.0, 6.9, 9.5, 14.5, 18.4, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6//añadir variable]
     }, ]
 });
 </script>
