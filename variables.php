@@ -19,7 +19,11 @@
 
 <div class="container" >
 
+
     <div style="position: relative; float: left; width: 200px"><h2>Variables</h2><br/></div>
+    <div style='position: relative; float: right; padding-top: 15px; width: 150px'>
+        <a href='administracion.php' class='btn btn-primary btn-lg' style="width: 150px">Volver</a>
+        </div>
 
     <form action="formuvariable.php" method="post">
                 <p>
@@ -34,33 +38,21 @@ $registros = mysqli_query($conexion, "SELECT Id, Nombre, Ud_Med
                                         FROM variables")
     or die("Problemas en la consulta:".mysqli_error($conexion));
      
-echo "<table class='table table-dark'>";
-echo "<tr><th>Id</th><th>Nombre</th><th>Unidad medida</th><th>Acciones</th>";
+echo "<table class='table table-dark' style='text-align:center'>";
+echo "<tr ><th style='text-align:center'>Id</th><th style='text-align:center'>Nombre</th><th style='text-align:center'>Unidad medida</th><th style='text-align:center'>Acciones</th>";
 while ($reg = mysqli_fetch_array($registros)) {
     echo "<tr>";
         echo "<td>" . $reg['Id'] . "</td>";
         echo "<td>" . $reg['Nombre'] . "</td>";
         echo "<td>" . $reg['Ud_Med'] . "</td>";
-        echo "<td><a class='btn btn-primary btn-sm' href='borrarvariables.php?id=$reg[Id]' > Borrar </a> </td>";
+        echo "<td><a class='btn btn-danger btn-sm' href='borrarvariables.php?id=$reg[Id]' > Borrar </a> 
+        <a class='btn btn-success btn-sm' href='vactualizar.php?id=$reg[Id]' > Actualizar </a>  </td>";
 
     echo "</tr>";
 }
 echo "</table>";
 
 
-    $conexionv = mysqli_connect("localhost", "root", "", "estacion")
-        or die("Problemas en la conexion");
-        
-    $registrosv = mysqli_query($conexionv, "SELECT * FROM variables WHERE Id='$reg[Id]'")
-        or die("Problemas en la consulta ".mysqli_error($conexionv));
-    
-    if ($regv = mysqli_fetch_array($registrosv)) {
-        mysqli_query($conexionv, "DELETE FROM variables WHERE Id='$reg[Id]'")
-            or die("Problemas en la consulta ".mysqli_error($conexionv));
-            print "<h3>Variable meteorologica borrada.</h3>";
-    } else {
-        
-    }
 
 mysqli_close($conexion);
 ?>
