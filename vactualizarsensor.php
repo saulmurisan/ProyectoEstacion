@@ -28,6 +28,7 @@
              ?>
             <form action="<?php echo "actualizarvariables.php?id='$id' method='post'"; ?>">
                 <input type="hidden" name="idVariable" id="idVariable" value="<?=$id?>">
+                <input type="hidden" name="paginaAdmin" id="paginaAdmin" value="1">
                 <div class="form-group">
                     <label for="EstacionS">Id de Estación</label>
                     <input type="text" class="form-control" name="EstacionS" id="EstacionS" 

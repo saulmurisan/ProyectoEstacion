@@ -28,11 +28,7 @@
              ?>
             <form action="<?php echo "actualizarvariables.php?id='$id' method='post'"; ?>">
                 <input type="hidden" name="idVariable" id="idVariable" value="<?=$id?>">
-                <div class="form-group">
-                    <label for="NombreS">Id</label>
-                    <input type="text" class="form-control" name="NombreS" id="NombreS" 
-                    value="<?php echo $reg['Nombre'] ?>" required>
-                </div>
+                <input type="hidden" name="paginaAdmin" id="paginaAdmin" value="2">
                 <div class="form-group">
                     <label for="MarcaE">Marca</label>
                     <input type="text" class="form-control" name="MarcaE" id="MarcaE" 

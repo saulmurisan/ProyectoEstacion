@@ -35,9 +35,13 @@ elseif ($pagina = 1) {
 }
 elseif ($pagina = 2) {
     $id = trim(htmlspecialchars($_REQUEST["idVariable"], ENT_QUOTES, "UTF-8"));
-    $tipo = trim(htmlspecialchars($_REQUEST["tipo"], ENT_QUOTES, "UTF-8"));
-    $unidad = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
-    
+    $marca = trim(htmlspecialchars($_REQUEST["tipo"], ENT_QUOTES, "UTF-8"));
+    $modelo = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
+    $ip = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
+    $tconexion = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
+    $ = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
+
+
     $conexionv = mysqli_connect("localhost", "root", "", "estacion")
         or die("Problemas de conexión");
     
