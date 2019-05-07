@@ -16,27 +16,47 @@
             <h2>Actualizar variable</h2>
             <?php
             $id = trim(htmlspecialchars($_REQUEST["id"], ENT_QUOTES, "UTF-8"));
+            $pagina = 2;
 
             $conexion = mysqli_connect("localhost", "root", "", "estacion")
                 or die("Problemas en la conexion");
 
-            $registro = mysqli_query($conexion, "SELECT * FROM variables WHERE Id = $id")
+            $registro = mysqli_query($conexion, "SELECT * FROM estaciones WHERE Id = $id")
                 or die("Problemas en la conexion 2");
             
             if ($reg = mysqli_fetch_array($registro)) {
              ?>
             <form action="<?php echo "actualizarvariables.php?id='$id' method='post'"; ?>">
                 <input type="hidden" name="idVariable" id="idVariable" value="<?=$id?>">
-                <input type="hidden" name="paginaAdmin" id="paginaAdmin" value="0">
                 <div class="form-group">
-                    <label for="tipo">Nombre</label>
-                    <input type="text" class="form-control" name="tipo" id="tipo"
+                    <label for="NombreS">Id</label>
+                    <input type="text" class="form-control" name="NombreS" id="NombreS" 
                     value="<?php echo $reg['Nombre'] ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="unidad">Unidad de medida</label>
-                    <input type="text" class="form-control" name="unidad" id="unidad" 
-                    value="<?php echo $reg['Ud_Med'] ?>" required>
+                    <label for="MarcaE">Marca</label>
+                    <input type="text" class="form-control" name="MarcaE" id="MarcaE" 
+                    value="<?php echo $reg['Marca'] ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="ModeloE">Modelo</label>
+                    <input type="text" class="form-control" name="ModeloE" id="ModeloE" 
+                    value="<?php echo $reg['Modelo'] ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="IpE">IP</label>
+                    <input type="text" class="form-control" name="IpE" id="IpE" 
+                    value="<?php echo $reg['IP'] ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="TipoE">Tipo de Conexión</label>
+                    <input type="text" class="form-control" name="TipoE" id="TipoE" 
+                    value="<?php echo $reg['Tipo_Conex'] ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="UbiE">Ubicación</label>
+                    <input type="text" class="form-control" name="UbiE" id="UbiE" 
+                    value="<?php echo $reg['Ubi'] ?>" required>
                 </div>
                 <p>
                     <br/>

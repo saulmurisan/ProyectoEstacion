@@ -16,27 +16,32 @@
             <h2>Actualizar variable</h2>
             <?php
             $id = trim(htmlspecialchars($_REQUEST["id"], ENT_QUOTES, "UTF-8"));
+            $pagina = 1;
 
             $conexion = mysqli_connect("localhost", "root", "", "estacion")
                 or die("Problemas en la conexion");
 
-            $registro = mysqli_query($conexion, "SELECT * FROM variables WHERE Id = $id")
+            $registro = mysqli_query($conexion, "SELECT * FROM sensores WHERE Id = $id")
                 or die("Problemas en la conexion 2");
             
             if ($reg = mysqli_fetch_array($registro)) {
              ?>
             <form action="<?php echo "actualizarvariables.php?id='$id' method='post'"; ?>">
                 <input type="hidden" name="idVariable" id="idVariable" value="<?=$id?>">
-                <input type="hidden" name="paginaAdmin" id="paginaAdmin" value="0">
                 <div class="form-group">
-                    <label for="tipo">Nombre</label>
-                    <input type="text" class="form-control" name="tipo" id="tipo"
+                    <label for="EstacionS">Id de Estación</label>
+                    <input type="text" class="form-control" name="EstacionS" id="EstacionS" 
+                    value="<?php echo $reg['Id_Estacion'] ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="NombreS">Nombre</label>
+                    <input type="text" class="form-control" name="NombreS" id="NombreS" 
                     value="<?php echo $reg['Nombre'] ?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="unidad">Unidad de medida</label>
-                    <input type="text" class="form-control" name="unidad" id="unidad" 
-                    value="<?php echo $reg['Ud_Med'] ?>" required>
+                    <label for="ModeloS">Modelo</label>
+                    <input type="text" class="form-control" name="ModeloS" id="ModeloS" 
+                    value="<?php echo $reg['Modelo'] ?>" required>
                 </div>
                 <p>
                     <br/>

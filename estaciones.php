@@ -20,7 +20,7 @@
 <div class="container" >
 
 
-    <div style="position: relative; float: left; width: 200px"><h2>Sensores</h2><br/></div>
+    <div style="position: relative; float: left; width: 200px"><h2>Estaciones</h2><br/></div>
     <div style='position: relative; float: right; padding-top: 15px; width: 150px'>
         <a href='administracion.php' class='btn btn-primary btn-lg' style="width: 150px">Volver</a>
         </div>
@@ -34,8 +34,8 @@
 
     <?php
 $conexion = mysqli_connect("localhost", "root", "", "estacion") or die("Problemas con la conexión");
-$registros = mysqli_query($conexion, "SELECT Id, Modelo, Nombre
-                                        FROM sensores")
+$registros = mysqli_query($conexion, "SELECT Id, Marca, Modelo, IP, Tipo_Conex, Ubi
+                                        FROM estaciones")
     or die("Problemas en la consulta:".mysqli_error($conexion));
      
 echo "<table class='table table-dark' style='text-align:center'>";
@@ -43,10 +43,13 @@ echo "<tr ><th style='text-align:center'>Id</th><th style='text-align:center'>No
 while ($reg = mysqli_fetch_array($registros)) {
     echo "<tr>";
         echo "<td>" . $reg['Id'] . "</td>";
+        echo "<td>" . $reg['Marca'] . "</td>";
         echo "<td>" . $reg['Modelo'] . "</td>";
-        echo "<td>" . $reg['Nombre'] . "</td>";
+        echo "<td>" . $reg['IP'] . "</td>";
+        echo "<td>" . $reg['Tipo_Conex'] . "</td>";
+        echo "<td>" . $reg['Ubi'] . "</td>";
         echo "<td><a class='btn btn-danger btn-sm' href='borrarvariables.php?id=$reg[Id]' > Borrar </a> 
-        <a class='btn btn-success btn-sm' href='vactualizarsensor.php?id=$reg[Id]' > Actualizar </a>  </td>";
+        <a class='btn btn-success btn-sm' href='vactualizarestacion.php?id=$reg[Id]' > Actualizar </a>  </td>";
 
     echo "</tr>";
 }
