@@ -145,38 +145,13 @@ while ($reg = mysqli_fetch_array($registros)) {
         echo "<td>" . $reg['IP'] . "</td>";
         echo "<td>" . $reg['Tipo_Conex'] . "</td>";
         echo "<td>" . $reg['Ubi'] . "</td>";
-        echo "<td><a href='#myModal' class='btn btn-danger btn-sm' data-toggle='modal'>Borrar </a>
+        echo "<td><a class='btn btn-danger btn-sm' href='borrarvariables.php?id=$reg[Id]&nombretabla=estaciones' > Borrar </a> 
         <a class='btn btn-success btn-sm' href='vactualizarestacion.php?id=$reg[Id]' > Actualizar </a>  </td>";
 
     echo "</tr>";
-
-echo "</table>";
-?>
-<!-- Modal HTML -->
-<div id="myModal" class="modal fade">
-	<div class="modal-dialog modal-confirm">
-		<div class="modal-content">
-			<div class="modal-header">
-				<div class="icon-box">
-					<i class="material-icons">&#xE5CD;</i>
-				</div>				
-				<h4 class="modal-title">¿Estás seguro?</h4>	
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-			</div>
-			<div class="modal-body">
-				<p>¿Realmente quieres borrar este registro?<br/> Este proceso no se puede deshacer.</p>
-			</div>
-			<div class="modal-footer">
-                <button type="button" class="btn btn-info" data-dismiss="modal">Cancelar</button>
-                <?php
-                echo "<a href='borrarvariables.php?id=$reg[Id]&nombretabla=estaciones'><button type='button' class='btn btn-danger'>Borrar</button></a>";
 }
-                ?>
-			</div>
-		</div>
-	</div>
-</div> 
-<?php
+echo "</table>";
+
 mysqli_close($conexion);
 ?>
 
