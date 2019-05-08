@@ -105,40 +105,62 @@
 			</div>
 			
 			<div style="position: relative; clear: both">
-
+			<br/><br/>
             <form action="inicio.php" method="post">
-                <div class="form-group">
-                    <label for="fechades" >Fecha desde: </label>
-                    <input type="date" class="form-control" name="fecdes" id="fecdes" required>
-                </div>
-                <div class="form-group">
-                    <label for="fechahas">Fecha hasta: </label>
-                    <input type="date" class="form-control" name="fechahas" id="fechahas" required>
-                </div>
-                <div class="form-group">
-                    <label for="medida">Tipo Medida: </label>
-                    <select name="medida" class="form-control" >
-			</div>
-		<?php
-		$conexion = mysqli_connect("localhost", "root", "", "estacion") 
-or die("Problemas de conexion");
+			<table style="border: 0px"class="table">
+					<tr>
+						<td>
+							<div class="form-group">
+                    			<label style="color: white" for="fechades" >Fecha desde: </label>
+                    			<input type="date" class="form-control" name="fecdes" id="fecdes" required>
+							</div>
+						</td>
+						<td>
+							<div class="form-group">
+                    			<label style="color: white" for="fechahas">Fecha hasta: </label>
+                    			<input type="date" class="form-control" name="fechahas" id="fechahas" required>
+                			</div>
+						</td>
+						<td rowspan="2">
+							<div>
+                    			<input style="height: 175px" type="submit" class="btn btn-primary btn-block" value="Buscar">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<div class="form-group">
+                    			<label style="color: white" for="medida">Tipo Medida: </label>
+                    			<select name="medida" class="form-control" >
+							</div>
+								<?php
+								$conexion = mysqli_connect("localhost", "root", "", "estacion") 
+									or die("Problemas de conexion");
 
-$registros = mysqli_query($conexion, "SELECT Id, Nombre FROM variables")
-or die("Problemas en el select".mysqli_error($conexion));
+								$registros = mysqli_query($conexion, "SELECT Id, Nombre FROM variables")
+									or die("Problemas en el select".mysqli_error($conexion));
 
-while ($reg = mysqli_fetch_array($registros)) {
-echo "<option value='$reg[id]'>$reg[nombre]</option>";
-}
-	?>
-      </select>
-                </div>
-                <div class="form-group">
-                    <label for="valormed">Valor Medida: </label>
-                    <input type="number" class="form-control" name="valormed" id="valormed">
-                </div>
-                <p>
-                    <input type="submit" class="btn btn-primary btn-block" value="Buscar">
-                </p>
+								while ($reg = mysqli_fetch_array($registros)) {
+									echo "<option value='$reg[id]'>$reg[nombre]</option>";
+								}
+							?>
+      						</select>
+						</td>
+						<td>
+							<div class="form-group">
+                    			<label style="color: white" for="valormed">Valor Medida: </label>
+                    			<input type="number" class="form-control" name="valormed" id="valormed">
+                			</div>
+						</td>
+					</tr>
+				</table>
+                
+                
+				
+                
+            
+                
+                
             </form>
 
 <?php
