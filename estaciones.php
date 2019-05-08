@@ -39,7 +39,7 @@ $registros = mysqli_query($conexion, "SELECT Id, Marca, Modelo, IP, Tipo_Conex, 
     or die("Problemas en la consulta:".mysqli_error($conexion));
      
 echo "<table class='table table-dark' style='text-align:center'>";
-echo "<tr ><th style='text-align:center'>Id</th><th style='text-align:center'>Nombre</th><th style='text-align:center'>Unidad medida</th><th style='text-align:center'>Acciones</th>";
+echo "<tr ><th style='text-align:center'>Id</th><th style='text-align:center'>Marca</th><th style='text-align:center'>Modelo</th><th style='text-align:center'>IP</th><th style='text-align:center'>Tipo de Conexión</th><th style='text-align:center'>Ubicación</th><th style='text-align:center'>Acciones</th>";
 while ($reg = mysqli_fetch_array($registros)) {
     echo "<tr>";
         echo "<td>" . $reg['Id'] . "</td>";
@@ -48,7 +48,7 @@ while ($reg = mysqli_fetch_array($registros)) {
         echo "<td>" . $reg['IP'] . "</td>";
         echo "<td>" . $reg['Tipo_Conex'] . "</td>";
         echo "<td>" . $reg['Ubi'] . "</td>";
-        echo "<td><a class='btn btn-danger btn-sm' href='borrarvariables.php?id=$reg[Id]' > Borrar </a> 
+        echo "<td><a class='btn btn-danger btn-sm' href='borrarvariables.php?id=$reg[Id]&nombretabla=estaciones' > Borrar </a> 
         <a class='btn btn-success btn-sm' href='vactualizarestacion.php?id=$reg[Id]' > Actualizar </a>  </td>";
 
     echo "</tr>";

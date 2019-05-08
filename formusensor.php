@@ -17,10 +17,6 @@
             <form action="insertarvariable.php" method="post">
             <input type="hidden" name="paginaAdmin" id="paginaAdmin" value="1">
                 <div class="form-group">
-                    <label for="tipo">Nombre</label>
-                    <input type="text" class="form-control" name="tipo" id="tipo" required>
-                </div>
-                <div class="form-group">
                     <label for="EstacionS">Id de Estación</label>
                     <input type="text" class="form-control" name="EstacionS" id="EstacionS" required>
                 </div>

@@ -17,14 +17,6 @@
             <form action="insertarvariable.php" method="post">
             <input type="hidden" name="paginaAdmin" id="paginaAdmin" value="2">
                 <div class="form-group">
-                    <label for="tipo">Nombre</label>
-                    <input type="text" class="form-control" name="tipo" id="tipo" required>
-                </div>
-                <div class="form-group">
-                    <label for="unidad">Unidad de medida</label>
-                    <input type="text" class="form-control" name="unidad" id="unidad" required>
-                </div>
-                <div class="form-group">
                     <label for="MarcaE">Marca</label>
                     <input type="text" class="form-control" name="MarcaE" id="MarcaE" required>
                 </div>

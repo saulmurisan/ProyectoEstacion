@@ -39,13 +39,13 @@ $registros = mysqli_query($conexion, "SELECT Id, Modelo, Nombre
     or die("Problemas en la consulta:".mysqli_error($conexion));
      
 echo "<table class='table table-dark' style='text-align:center'>";
-echo "<tr ><th style='text-align:center'>Id</th><th style='text-align:center'>Nombre</th><th style='text-align:center'>Unidad medida</th><th style='text-align:center'>Acciones</th>";
+echo "<tr ><th style='text-align:center'>Id</th><th style='text-align:center'>Modelo</th><th style='text-align:center'>Nombre</th><th style='text-align:center'>Acciones</th>";
 while ($reg = mysqli_fetch_array($registros)) {
     echo "<tr>";
         echo "<td>" . $reg['Id'] . "</td>";
         echo "<td>" . $reg['Modelo'] . "</td>";
         echo "<td>" . $reg['Nombre'] . "</td>";
-        echo "<td><a class='btn btn-danger btn-sm' href='borrarvariables.php?id=$reg[Id]' > Borrar </a> 
+        echo "<td><a class='btn btn-danger btn-sm' href='borrarvariables.php?id=$reg[Id]&nombretabla=sensores' > Borrar </a> 
         <a class='btn btn-success btn-sm' href='vactualizarsensor.php?id=$reg[Id]' > Actualizar </a>  </td>";
 
     echo "</tr>";

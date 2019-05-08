@@ -1,8 +1,8 @@
 <?php
 
 $pagina = trim(htmlspecialchars($_REQUEST["paginaAdmin"], ENT_QUOTES, "UTF-8"));
-
-if ($pagina = 0) {
+echo "$pagina";
+if ($pagina == 0) {
     $tipo = trim(htmlspecialchars($_REQUEST["tipo"], ENT_QUOTES, "UTF-8"));
     $unidad = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
     
@@ -22,7 +22,7 @@ if ($pagina = 0) {
     }
     mysqli_close($conexionv);
 }
-elseif ($pagina = 1) {
+elseif ($pagina == 1) {
     $estacion = trim(htmlspecialchars($_REQUEST["EstacionS"], ENT_QUOTES, "UTF-8"));
     $nombre = trim(htmlspecialchars($_REQUEST["NombreS"], ENT_QUOTES, "UTF-8"));
     $modelo = trim(htmlspecialchars($_REQUEST["ModeloS"], ENT_QUOTES, "UTF-8"));
@@ -43,7 +43,7 @@ elseif ($pagina = 1) {
         }
     mysqli_close($conexionv);
 }
-elseif ($pagina = 2) {
+elseif ($pagina == 2) {
     $marca = trim(htmlspecialchars($_REQUEST["MarcaE"], ENT_QUOTES, "UTF-8"));
     $modelo = trim(htmlspecialchars($_REQUEST["ModeloE"], ENT_QUOTES, "UTF-8"));
     $ip = trim(htmlspecialchars($_REQUEST["IpE"], ENT_QUOTES, "UTF-8"));

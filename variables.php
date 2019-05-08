@@ -45,7 +45,7 @@ while ($reg = mysqli_fetch_array($registros)) {
         echo "<td>" . $reg['Id'] . "</td>";
         echo "<td>" . $reg['Nombre'] . "</td>";
         echo "<td>" . $reg['Ud_Med'] . "</td>";
-        echo "<td><a class='btn btn-danger btn-sm' href='borrarvariables.php?id=$reg[Id]' > Borrar </a> 
+        echo "<td><a class='btn btn-danger btn-sm' href='borrarvariables.php?id=$reg[Id]&nombretabla=variables' > Borrar </a> 
         <a class='btn btn-success btn-sm' href='vactualizar.php?id=$reg[Id]' > Actualizar </a>  </td>";
 
     echo "</tr>";
