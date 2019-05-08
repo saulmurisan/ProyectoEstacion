@@ -23,10 +23,22 @@
 
     <?php
     $usuario = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
-    $contraseña = trim(htmlspecialchars($_REQUEST["contraseña"], ENT_QUOTES, "UTF-8"));
-    if (($usuario != 'Admin') && ($contraseña != 'Admin2018/19')) {
+    $contrasena = trim(htmlspecialchars($_REQUEST["contraseña"], ENT_QUOTES, "UTF-8"));
+
+    $conexion = mysqli_connect("localhost", "root", "", "estacion")
+    or die("Problemas en la conexion");
+    
+    $consulta = "SELECT * FROM administradores WHERE Usuario='$usuario' AND Contrasena='$contrasena'";
+    
+    $registros = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
+    $count = mysqli_num_rows($registros);
+    if ($count != 1) {
         header('location: inicio.php?error=Usuario o Contraseña Incorrecta');
-    } else { 
+    } else {
+
+    /*if (($usuario != 'Admin') && ($contraseña != 'Admin2018/19')) {
+        header('location: inicio.php?error=Usuario o Contraseña Incorrecta');
+    } else { */
     ?>
 
         <div style='position: relative; float: right; padding-top: 15px; width: 150px'>

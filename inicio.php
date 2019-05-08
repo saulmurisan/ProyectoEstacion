@@ -84,7 +84,7 @@
 						<input type="password" class="form-control" placeholder="Contraseña" id="contraseña" name="contraseña" required="required">
 					</div>
 					<div class="form-group">
-						<input type="submit" class="btn btn-primary btn-block btn-lg" value="Login" >
+						<input type="submit" class="btn btn-primary btn-block btn-lg" value="Iniciar Sesión" >
 					</div>
 				</form>				
 
