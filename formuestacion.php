@@ -13,9 +13,9 @@
     </head>
     <body style="background-color: #232327; color: white">
         <div class="container">
-            <h2>Insertar nueva variable</h2>
+            <h2>Insertar nueva estación</h2>
             <form action="insertarvariable.php" method="post">
-            <input type="hidden" name="paginaAdmin" id="paginaAdmin" value="0">
+            <input type="hidden" name="paginaAdmin" id="paginaAdmin" value="2">
                 <div class="form-group">
                     <label for="tipo">Nombre</label>
                     <input type="text" class="form-control" name="tipo" id="tipo" required>
@@ -24,9 +24,29 @@
                     <label for="unidad">Unidad de medida</label>
                     <input type="text" class="form-control" name="unidad" id="unidad" required>
                 </div>
+                <div class="form-group">
+                    <label for="MarcaE">Marca</label>
+                    <input type="text" class="form-control" name="MarcaE" id="MarcaE" required>
+                </div>
+                <div class="form-group">
+                    <label for="ModeloE">Modelo</label>
+                    <input type="text" class="form-control" name="ModeloE" id="ModeloE" required>
+                </div>
+                <div class="form-group">
+                    <label for="IpE">IP</label>
+                    <input type="text" class="form-control" name="IpE" id="IpE" required>
+                </div>
+                <div class="form-group">
+                    <label for="TipoE">Tipo de Conexión</label>
+                    <input type="text" class="form-control" name="TipoE" id="TipoE" required>
+                </div>
+                <div class="form-group">
+                    <label for="UbiE">Ubicación</label>
+                    <input type="text" class="form-control" name="UbiE" id="UbiE" required>
+                </div>
                 <p>
                     <br/>
-                    <input type="submit" class="btn btn-primary btn-block" value="Insertar variable">
+                    <input type="submit" class="btn btn-primary btn-block" value="Insertar estación">
                 </p>
                 <p>
                 <?php

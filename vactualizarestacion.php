@@ -16,7 +16,6 @@
             <h2>Actualizar variable</h2>
             <?php
             $id = trim(htmlspecialchars($_REQUEST["id"], ENT_QUOTES, "UTF-8"));
-            $pagina = 2;
 
             $conexion = mysqli_connect("localhost", "root", "", "estacion")
                 or die("Problemas en la conexion");

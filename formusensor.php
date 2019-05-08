@@ -13,20 +13,28 @@
     </head>
     <body style="background-color: #232327; color: white">
         <div class="container">
-            <h2>Insertar nueva variable</h2>
+            <h2>Insertar nuevo sensor</h2>
             <form action="insertarvariable.php" method="post">
-            <input type="hidden" name="paginaAdmin" id="paginaAdmin" value="0">
+            <input type="hidden" name="paginaAdmin" id="paginaAdmin" value="1">
                 <div class="form-group">
                     <label for="tipo">Nombre</label>
                     <input type="text" class="form-control" name="tipo" id="tipo" required>
                 </div>
                 <div class="form-group">
-                    <label for="unidad">Unidad de medida</label>
-                    <input type="text" class="form-control" name="unidad" id="unidad" required>
+                    <label for="EstacionS">Id de Estación</label>
+                    <input type="text" class="form-control" name="EstacionS" id="EstacionS" required>
+                </div>
+                <div class="form-group">
+                    <label for="NombreS">Nombre</label>
+                    <input type="text" class="form-control" name="NombreS" id="NombreS" required>
+                </div>
+                <div class="form-group">
+                    <label for="ModeloS">Modelo</label>
+                    <input type="text" class="form-control" name="ModeloS" id="ModeloS" required>
                 </div>
                 <p>
                     <br/>
-                    <input type="submit" class="btn btn-primary btn-block" value="Insertar variable">
+                    <input type="submit" class="btn btn-primary btn-block" value="Insertar sensor">
                 </p>
                 <p>
                 <?php

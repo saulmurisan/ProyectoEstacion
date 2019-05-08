@@ -25,7 +25,7 @@
         <a href='administracion.php' class='btn btn-primary btn-lg' style="width: 150px">Volver</a>
         </div>
 
-    <form action="formuvariable.php" method="post">
+    <form action="formuestacion.php" method="post">
                 <p>
                     <input type="submit" class="btn btn-primary btn-block" value="Insertar nueva variable">
                 </p>

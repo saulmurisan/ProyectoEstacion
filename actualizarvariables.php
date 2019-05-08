@@ -35,17 +35,17 @@ elseif ($pagina = 1) {
 }
 elseif ($pagina = 2) {
     $id = trim(htmlspecialchars($_REQUEST["idVariable"], ENT_QUOTES, "UTF-8"));
-    $marca = trim(htmlspecialchars($_REQUEST["tipo"], ENT_QUOTES, "UTF-8"));
-    $modelo = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
-    $ip = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
-    $tconexion = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
-    $ = trim(htmlspecialchars($_REQUEST["unidad"], ENT_QUOTES, "UTF-8"));
+    $marca = trim(htmlspecialchars($_REQUEST["MarcaE"], ENT_QUOTES, "UTF-8"));
+    $modelo = trim(htmlspecialchars($_REQUEST["ModeloE"], ENT_QUOTES, "UTF-8"));
+    $ip = trim(htmlspecialchars($_REQUEST["IpE"], ENT_QUOTES, "UTF-8"));
+    $tconexion = trim(htmlspecialchars($_REQUEST["TipoE"], ENT_QUOTES, "UTF-8"));
+    $ubicacion = trim(htmlspecialchars($_REQUEST["UbiE"], ENT_QUOTES, "UTF-8"));
 
 
     $conexionv = mysqli_connect("localhost", "root", "", "estacion")
         or die("Problemas de conexión");
     
-    $registrosv = mysqli_query($conexionv, "UPDATE variables SET nombre='$tipo', Ud_med='$unidad' WHERE Id='$id'") 
+    $registrosv = mysqli_query($conexionv, "UPDATE estaciones SET Marca='$marca', Modelo='$modelo', IP='$ip', Tipo_Conex='$tconexion', Ubi='$ubicacion' WHERE Id='$id'") 
         or die("Problemas de actualización ".mysqli_error($conexionv));
     
         header("Location: variables.php?");
@@ -53,7 +53,7 @@ elseif ($pagina = 2) {
     mysqli_close($conexionv);
 }
 else {
-    echo "Error en la actualización de archivos."
+    echo "Error en la sintaxis del código";
 }
 
 ?>
