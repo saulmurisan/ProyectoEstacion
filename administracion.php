@@ -22,6 +22,7 @@
     <div style="position: relative; float: left; width: 200px"><h2>Administración</h2></div>
 
     <?php
+    
     $usuario = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
     $contrasena = trim(htmlspecialchars($_REQUEST["contraseña"], ENT_QUOTES, "UTF-8"));
 
@@ -35,14 +36,13 @@
     if ($count != 1) {
         header('location: inicio.php?error=Usuario o Contraseña Incorrecta');
     } else {
-
-    /*if (($usuario != 'Admin') && ($contraseña != 'Admin2018/19')) {
-        header('location: inicio.php?error=Usuario o Contraseña Incorrecta');
-    } else { */
+        session_start();
+        setcookie("usuarioWeb", $usuario, time()+60*60*24*365);
+        $_SESSION['nombreUsuario'] = $usuario;
     ?>
 
         <div style='position: relative; float: right; padding-top: 15px; width: 150px'>
-        <a href='inicio.php' class='btn btn-primary btn-lg' style="width: 150px">Inicio</a>
+        <a href='inicio.php' class='btn btn-primary btn-lg' style="width: 150px">Cerrar Sesión</a>
         </div>
     <?php
     }
