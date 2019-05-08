@@ -33,7 +33,7 @@ elseif ($pagina == 1) {
     $registrosv = mysqli_query($conexionv, "UPDATE sensores SET Id_Estacion='$estacion', Nombre='$nombre', Modelo='$modelo' WHERE Id='$id'") 
         or die("Problemas de actualización ".mysqli_error($conexionv));
     
-        header("Location: variables.php?");
+        header("Location: sensores.php?");
 
     mysqli_close($conexionv);
 }
@@ -52,7 +52,7 @@ elseif ($pagina == 2) {
     $registrosv = mysqli_query($conexionv, "UPDATE estaciones SET Marca='$marca', Modelo='$modelo', IP='$ip', Tipo_Conex='$tconexion', Ubi='$ubicacion' WHERE Id='$id'") 
         or die("Problemas de actualización ".mysqli_error($conexionv));
     
-        header("Location: variables.php?");
+        header("Location: estaciones.php?");
 
     mysqli_close($conexionv);
 }
