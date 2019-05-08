@@ -76,7 +76,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form action="administracion.php" method="post">
+				<form action="login.php" method="post">
 					<div class="form-group">
 						<input type="text" class="form-control" placeholder="Usuario" id="usuario" name="usuario" required="required">
 					</div>

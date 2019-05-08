@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (empty($_SESSION['nombreUsuario']) && empty($_SESSION['estado'])) {
+    header('location: inicio.php?error=Sesion finalizada');
+} else {
 
 $pagina = trim(htmlspecialchars($_REQUEST["paginaAdmin"], ENT_QUOTES, "UTF-8"));
 echo "$pagina";
@@ -69,5 +73,7 @@ elseif ($pagina == 2) {
 }
 else {
     echo "Error en la sintaxis del código.";
+}
+
 }
 ?>

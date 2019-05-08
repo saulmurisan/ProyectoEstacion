@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (empty($_SESSION['nombreUsuario']) && empty($_SESSION['estado'])) {
+    header('location: inicio.php?error=Sesion finalizada');
+} else {
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -64,3 +70,6 @@
             crossorigin="anonymous"></script>
     </body>
 </html>
+<?php
+}
+?>

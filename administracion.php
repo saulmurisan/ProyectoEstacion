@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (empty($_SESSION['nombreUsuario']) && empty($_SESSION['estado'])) {
+    header('location: inicio.php?error=Sesion finalizada');
+} else {
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,32 +27,10 @@
 
     <div style="position: relative; float: left; width: 200px"><h2>Administración</h2></div>
 
-    <?php
-    
-    $usuario = trim(htmlspecialchars($_REQUEST["usuario"], ENT_QUOTES, "UTF-8"));
-    $contrasena = trim(htmlspecialchars($_REQUEST["contraseña"], ENT_QUOTES, "UTF-8"));
-
-    $conexion = mysqli_connect("localhost", "root", "", "estacion")
-    or die("Problemas en la conexion");
-    
-    $consulta = "SELECT * FROM administradores WHERE Usuario='$usuario' AND Contrasena='$contrasena'";
-    
-    $registros = mysqli_query($conexion, $consulta) or die(mysqli_error($conexion));
-    $count = mysqli_num_rows($registros);
-    if ($count != 1) {
-        header('location: inicio.php?error=Usuario o Contraseña Incorrecta');
-    } else {
-        session_start();
-        setcookie("usuarioWeb", $usuario, time()+60*60*24*365);
-        $_SESSION['nombreUsuario'] = $usuario;
-    ?>
-
         <div style='position: relative; float: right; padding-top: 15px; width: 150px'>
-        <a href='inicio.php' class='btn btn-primary btn-lg' style="width: 150px">Cerrar Sesión</a>
+        <a href='logout.php' class='btn btn-primary btn-lg' style="width: 150px">Cerrar Sesión</a>
         </div>
-    <?php
-    }
-    ?>
+    
     <div style="width: 300px ;margin: 0 auto">
         <div style='position: relative; float: left; clear: both; padding-top: 90px; width: 300px'><a href='variables.php' class='btn btn-primary btn-lg' style="width: 300px">Variables meteorológicas</a></div>
         <div style='position: relative; float: left; clear: both; padding-top: 50px; width: 300px'><a href='sensores.php' class='btn btn-primary btn-lg' style="width: 300px">Sensores</a></div>
@@ -70,3 +54,6 @@
             crossorigin="anonymous"></script>
 </body>
 </html>
+<?php
+}
+?>

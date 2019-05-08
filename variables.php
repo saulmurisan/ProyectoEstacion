@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (empty($_SESSION['nombreUsuario']) && empty($_SESSION['estado'])) {
+    header('location: inicio.php?error=Sesion finalizada');
+} else {
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +22,6 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color: #232327; color: white">
-
 <div class="container" >
 
 
@@ -75,3 +80,6 @@ mysqli_close($conexion);
             crossorigin="anonymous"></script>
 </body>
 </html>
+<?php
+}
+?>
