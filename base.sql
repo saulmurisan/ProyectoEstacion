@@ -104,7 +104,7 @@ CREATE TABLE `sensores` (
   `Nombre` varchar(250) NOT NULL,
   PRIMARY KEY (`Id`),
   KEY `fk_estacion_Sensores` (`Id_Estacion`),
-  CONSTRAINT `fk_estacion_Sensores` FOREIGN KEY (`Id_Estacion`) REFERENCES `sensores` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_estacion_Sensores` FOREIGN KEY (`Id_Estacion`) REFERENCES `estaciones` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
