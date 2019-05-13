@@ -19,7 +19,7 @@ if (empty($_SESSION['nombreUsuario']) && empty($_SESSION['estado'])) {
     </head>
     <body style="background-color: #232327; color: white">
         <div class="container">
-            <h2>Actualizar variable</h2>
+            <h2>Actualizar estación</h2>
             <?php
             $id = trim(htmlspecialchars($_REQUEST["id"], ENT_QUOTES, "UTF-8"));
 
