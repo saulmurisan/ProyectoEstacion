@@ -131,8 +131,8 @@
 						<td>
 							<div class="form-group">
                     			<label style="color: white" for="medida">Tipo Medida: </label>
-                    			<select name="medida" class="form-control" >
-							</div>
+                    			<select name="medida" class="form-control">
+							</div> 
 								<?php
 								$conexion = mysqli_connect("localhost", "root", "", "estacion") 
 									or die("Problemas de conexion");
@@ -141,7 +141,7 @@
 									or die("Problemas en el select".mysqli_error($conexion));
 
 								while ($reg = mysqli_fetch_array($registros)) {
-									echo "<option value='$reg[id]'>$reg[nombre]</option>";
+									echo "<option value='$reg[Nombre]'>$reg[Nombre]</option>";
 								}
 							?>
       						</select>
@@ -153,14 +153,7 @@
                 			</div>
 						</td>
 					</tr>
-				</table>
-                
-                
-				
-                
-            
-                
-                
+				</table> 
             </form>
 
 <?php
