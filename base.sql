@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `estacion` /*!40100 DEFAULT CHARACTER SET utf8mb4
 USE `estacion`;
 -- MySQL dump 10.16  Distrib 10.1.37-MariaDB, for Win32 (AMD64)
 --
--- Host: localhost    Database: estacion
+-- Host: 127.0.0.1    Database: estacion
 -- ------------------------------------------------------
 -- Server version	10.1.37-MariaDB
 
@@ -34,6 +34,16 @@ CREATE TABLE `administradores` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `administradores`
+--
+
+LOCK TABLES `administradores` WRITE;
+/*!40000 ALTER TABLE `administradores` DISABLE KEYS */;
+INSERT INTO `administradores` VALUES (0,'Admin','Admin2018/19');
+/*!40000 ALTER TABLE `administradores` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `asignaciones`
 --
 
@@ -52,6 +62,15 @@ CREATE TABLE `asignaciones` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `asignaciones`
+--
+
+LOCK TABLES `asignaciones` WRITE;
+/*!40000 ALTER TABLE `asignaciones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `asignaciones` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `estaciones`
 --
 
@@ -67,8 +86,18 @@ CREATE TABLE `estaciones` (
   `Ubi` varchar(45) NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Id_UNIQUE` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `estaciones`
+--
+
+LOCK TABLES `estaciones` WRITE;
+/*!40000 ALTER TABLE `estaciones` DISABLE KEYS */;
+INSERT INTO `estaciones` VALUES (1,'Asus','UX88','10.3.30.2','Ethernet','Invernadero NÂº4');
+/*!40000 ALTER TABLE `estaciones` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `medidas`
@@ -91,6 +120,16 @@ CREATE TABLE `medidas` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `medidas`
+--
+
+LOCK TABLES `medidas` WRITE;
+/*!40000 ALTER TABLE `medidas` DISABLE KEYS */;
+INSERT INTO `medidas` VALUES (1,1,'2019-05-11 09:00:00','28'),(2,2,'2019-05-11 09:00:00','28');
+/*!40000 ALTER TABLE `medidas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `sensores`
 --
 
@@ -105,8 +144,18 @@ CREATE TABLE `sensores` (
   PRIMARY KEY (`Id`),
   KEY `fk_estacion_Sensores` (`Id_Estacion`),
   CONSTRAINT `fk_estacion_Sensores` FOREIGN KEY (`Id_Estacion`) REFERENCES `estaciones` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sensores`
+--
+
+LOCK TABLES `sensores` WRITE;
+/*!40000 ALTER TABLE `sensores` DISABLE KEYS */;
+INSERT INTO `sensores` VALUES (1,1,'RXUW8','Microstar'),(2,1,'JRT86','KotoTech');
+/*!40000 ALTER TABLE `sensores` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `variables`
@@ -120,8 +169,18 @@ CREATE TABLE `variables` (
   `Nombre` varchar(45) NOT NULL,
   `Ud_Med` varchar(45) NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `variables`
+--
+
+LOCK TABLES `variables` WRITE;
+/*!40000 ALTER TABLE `variables` DISABLE KEYS */;
+INSERT INTO `variables` VALUES (1,'Temperatura','Grados Celsius'),(2,'Humedad','Porcentaje de agua en aire'),(3,'Presion','ATM');
+/*!40000 ALTER TABLE `variables` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -132,4 +191,4 @@ CREATE TABLE `variables` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-08  8:33:18
+-- Dump completed on 2019-05-13 14:43:25
