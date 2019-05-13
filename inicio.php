@@ -163,15 +163,15 @@ $registros = mysqli_query($conexion, "SELECT me.Fecha_Hora, va.Nombre, me.Valor,
                                         INNER JOIN variables as va on me.Variables_Id = va.Id")
     or die("Problemas en la consulta:".mysqli_error($conexion));
      
-echo "<table class='table table-striped'>";
+echo "<table class='table table-striped' style='background-color: white'>";
 echo "<tr><th>Fecha</th><th>Tipo</th><th>Valor</th><th>Unidad</th><th>Sensor</th>";
 while ($reg = mysqli_fetch_array($registros)) {
     echo "<tr>";
-        echo "<td>" . $reg['me.Fecha_Hora'] . "</td>";
-        echo "<td>" . $reg['va.Nombre'] . "</td>";
-        echo "<td>" . $reg['me.Valor'] . "</td>";
-        echo "<td>" . $reg['va.Ud_Med'] . "</td>";
-        echo "<td>" . $reg['se.Modelo'] . "</td>";
+        echo "<td>" . $reg['Fecha_Hora'] . "</td>";
+        echo "<td>" . $reg['Nombre'] . "</td>";
+        echo "<td>" . $reg['Valor'] . "</td>";
+        echo "<td>" . $reg['Ud_Med'] . "</td>";
+        echo "<td>" . $reg['Modelo'] . "</td>";
     echo "</tr>";
 }
 echo "</table>";
